@@ -1,0 +1,53 @@
+// THEORY:
+// The problem of string matching involves finding the first occurrence of a substring (pattern) `pat` 
+// within a larger string `text`. If the pattern is found, we return its starting index in the text; 
+// otherwise, we return -1. This problem is fundamental in text processing and has various applications 
+// in search engines, text editors, and DNA sequence analysis.
+
+// PROBLEM STATEMENT:
+// Given two strings `text` and `pat`, find the index of the first occurrence of `pat` in `text`.
+// - If `pat` is not a substring of `text`, return -1.
+// - If the length of `pat` is greater than the length of `text`, return -1 immediately.
+
+// SOLUTION:
+// - First, check if the length of the pattern `pat` is greater than the length of the text `text`. 
+//   If true, return -1 since `pat` cannot fit inside `text`.
+// - Iterate through each character of `text`:
+//   - Check if the current character matches the first character of `pat`.
+//   - If yes, extract a substring of length equal to `pat` from `text` starting at the current index 
+//     and compare it with `pat`.
+//   - If they match, return the current index.
+// - If no match is found after traversing the text, return -1.
+
+
+// TIME COMPLEXITY:
+// O(n * m) - Here `n` is the length of `text`, and `m` is the length of `pat`. 
+// For each character in `text` (outer loop), a substring of length `m` is extracted and compared with `pat`.
+
+// SPACE COMPLEXITY:
+// O(m) - The `substr` function creates a temporary string of length `m` during each comparison.
+
+// EXAMPLES:
+// Example 1:
+// Input: text = "hello", pat = "ll"
+// Process:
+// - The pattern "ll" starts at index 2 in "hello".
+// Output: 2
+
+// Example 2:
+// Input: text = "hello", pat = "world"
+// Process:
+// - The pattern "world" is not found in "hello".
+// Output: -1
+
+// Example 3:
+// Input: text = "a", pat = "aa"
+// Process:
+// - The pattern "aa" is longer than the text "a", so it cannot match.
+// Output: -1
+
+// Example 4:
+// Input: text = "abcabc", pat = "abc"
+// Process:
+// - The pattern "abc" first appears at index 0 in "abcabc".
+// Output: 0
