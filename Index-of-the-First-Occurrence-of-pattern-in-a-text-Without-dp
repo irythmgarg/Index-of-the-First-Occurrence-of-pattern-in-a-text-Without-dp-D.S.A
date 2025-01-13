@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    int findMatching(string text, string pat) {
+        // If the pattern is longer than the text, return -1
+        if (pat.length() > text.length()) {
+            return -1;
+        }
+
+        // Iterate through each character of the text
+        for (int i = 0; i < text.length(); i++) {
+            // Check if the current character matches the first character of the pattern
+            if (text[i] == pat[0]) {
+                // Extract a substring of the same length as `pat` and compare
+                if (text.substr(i, pat.length()) == pat) {
+                    return i; // Return the starting index if a match is found
+                }
+            }
+        }
+
+        // Return -1 if no match is found
+        return -1;
+    }
+};
